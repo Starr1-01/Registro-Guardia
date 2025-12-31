@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>REGISTRO</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: black;
+    color: #ff0000;
+    font-family: 'VT323', monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* VHS Noise */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.03) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    animation: noise 0.2s infinite;
+}
+
+@keyframes noise {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-2px); }
+}
+
+/* Container */
+.container {
+    background: rgba(0,0,0,0.85);
+    padding: 30px;
+    border: 2px solid red;
+    box-shadow: 0 0 20px red;
+    width: 320px;
+    text-align: center;
+    animation: flicker 3s infinite;
+}
+
+/* Flicker */
+@keyframes flicker {
+    0%, 95%, 100% { opacity: 1; }
+    96% { opacity: 0.6; }
+    97% { opacity: 0.3; }
+}
+
+/* Glitch Title */
+h1 {
+    font-size: 40px;
+    position: relative;
+    animation: glitch 1.5s infinite;
+}
+
+@keyframes glitch {
+    0% { text-shadow: 2px 2px red; }
+    20% { text-shadow: -2px -2px cyan; }
+    40% { text-shadow: 2px -2px magenta; }
+    60% { text-shadow: -2px 2px red; }
+    100% { text-shadow: 2px 2px red; }
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    background: black;
+    border: 1px solid red;
+    color: red;
+    font-family: inherit;
+    font-size: 18px;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 10px red;
+}
+
+/* Button */
+button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background: red;
+    color: black;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 5px red; }
+    50% { box-shadow: 0 0 20px red; }
+    100% { box-shadow: 0 0 5px red; }
+}
+
+button:hover {
+    background: darkred;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>REGISTRO</h1>
+
+    <form action="https://formspree.io/f/xykzgnwl" method="POST">
+        <input type="text" name="nombre" placeholder="NOMBRE" required>
+        <input type="email" name="email" placeholder="EMAIL" required>
+        <input type="text" name="usuario" placeholder="USUARIO" required>
+
+        <button type="submit">ENTRAR</button>
+    </form>
+</div>
+
+</body>
+</html>
